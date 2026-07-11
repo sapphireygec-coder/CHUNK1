@@ -296,7 +296,7 @@
   <div class="note-box" id="noteBox"></div>
 
   <div class="foot">
-    音声はまず <code>audio</code> フォルダの中の録音ファイル（例: <code>audio/0011.mp3</code>）を探しにいき、見つかればそれを再生します。見つからないカードは自動でブラウザの読み上げ機能（Web Speech API）が代わりに読み上げます。<br>
+    音声はまず、このページと同じ場所にある録音ファイル（例: <code>0011.mp3</code>）を探しにいき、見つかればそれを再生します。見つからないカードは自動でブラウザの読み上げ機能（Web Speech API）が代わりに読み上げます。<br>
     学習の記録（できた／わからない）は自動的に保存され、次回開いたときも引き継がれます。
   </div>
 
@@ -384,10 +384,10 @@ const CARDS = [
  {id:'0070',g:'F',tab:'動作について話す',jp:'彼らの歯を磨く',en:'brush their teeth',key:'brush',
    note:'<b>「かぜを引く」の catch</b><br>catch の中心イメージは「動くものを捕まえること」。空気中の菌を捕まえるイメージから catch a cold で「かぜを引く」という意味になる。'},
 ];
-// Each card automatically looks for a recording at audio/<id>.mp3 (e.g. audio/0011.mp3).
-// Upload a matching file to the "audio" folder in the repo and it will be used automatically.
+// Each card automatically looks for a recording at <id>.mp3, in the SAME folder as this index.html file (e.g. 0011.mp3).
+// Upload matching files to the repo (same level as index.html) and they will be used automatically.
 // Cards without a matching file simply fall back to the computer voice — no code changes needed.
-CARDS.forEach(c => { c.audio = 'audio/' + c.id + '.mp3'; });
+CARDS.forEach(c => { c.audio = c.id + '.mp3'; });
 
 // score (= number of cards marked "できた") out of 60, with an English comment per range
 const SCORE_BANDS = [
@@ -607,3 +607,4 @@ document.addEventListener('keydown', (e)=>{
 loadProgress();
 </script>
 </body>
+</html>
